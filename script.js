@@ -20,7 +20,7 @@
     //add event listener to buttons
     //function, if correct, play on
     //if click !===correct answer, subtract time from clock
-    //alert corrent or incorrect
+    //alert correct or incorrect
     //move onto next question
 //3. repeat above 3 times for total of 4 questions
 //4. If questions answered correctly, add counter to keep score
@@ -28,3 +28,8 @@
 //5. Timer vs questions to stop the game. 
     //if timer === 0 alert game over - need to find a way to 
     //else if questions answered alert game over/you win - maybe attach this to last question ?
+//6. At end of game imput name for high score
+    //record score of player
+    //save their name
+    //have it saved for future games
+    // click function for high scores in top right corner - event listener for when clicked display high scores
