@@ -12,24 +12,60 @@
 
 
 //1.Generate start button. 
-    //add event listener to click
-    //when clicked, start a timer
-    //take to new page showing first questions
+//add event listener to click
+const startBtn = document.querySelector("#startBtn");
+let timeDisplay = document.querySelector("#timer")
+const startingTime = 1;
+let time = startingTime * 60;
+
+let start = startBtn.addEventListener('click', function() {
+    console.log("clicked");
+    setInterval(timer, 1000);
+});
+
+function timer() {
+    const minutes = Math.floor(time / 60);
+    let seconds = time % 60;
+
+    seconds = seconds < 1 ? '0' + seconds : seconds;
+
+    timeDisplay.innerHTML =
+        `${minutes}: ${seconds}`;
+
+    time--;
+}
+
+
+
+
+
+
+
+
+// if (timer < 0) {
+//     clearInterval(timer);
+//     document.getElementById("end").innerHTML = "TIME UP!!";
+// }
+
+
+
+//when clicked, start a timer
+//take to new page showing first questions
 //2. generate question in header
-    //create buttons under header with answers
-    //add event listener to buttons
-    //function, if correct, play on
-    //if click !===correct answer, subtract time from clock
-    //alert correct or incorrect
-    //move onto next question
+//create buttons under header with answers
+//add event listener to buttons
+//function, if correct, play on
+//if click !===correct answer, subtract time from clock
+//alert correct or incorrect
+//move onto next question
 //3. repeat above 3 times for total of 4 questions
 //4. If questions answered correctly, add counter to keep score
-    //let answer = 0 answer ++
+//let answer = 0 answer ++
 //5. Timer vs questions to stop the game. 
-    //if timer === 0 alert game over - need to find a way to 
-    //else if questions answered alert game over/you win - maybe attach this to last question ?
+//if timer === 0 alert game over - need to find a way to 
+//else if questions answered alert game over/you win - maybe attach this to last question ?
 //6. At end of game imput name for high score
-    //record score of player
-    //save their name
-    //have it saved for future games
-    // click function for high scores in top right corner - event listener for when clicked display high scores
+//record score of player
+//save their name
+//have it saved for future games
+// click function for high scores in top right corner - event listener for when clicked display high scores
