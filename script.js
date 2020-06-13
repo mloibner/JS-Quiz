@@ -33,6 +33,11 @@ function timer() {
         `${minutes}: ${seconds}`;
 
     time--;
+
+    if (startingTime && time < 0) {
+        clearInterval(time);
+        timeDisplay.innerHTML = "TIME'S UP !!!"
+    }
 }
 
 
