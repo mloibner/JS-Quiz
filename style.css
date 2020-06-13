@@ -1,12 +1,11 @@
-
 body {
     background-color: floralwhite;
 }
 
 .homeContent {
-padding: 25%;
-text-align: center;
-margin: auto;
+    padding: 25%;
+    text-align: center;
+    margin: auto;
 }
 
 .timer {
@@ -20,7 +19,7 @@ margin: auto;
     float: left;
     font-size: medium;
     margin-top: 20px;
-    color:  rgb(191, 138, 241);
+    color: rgb(191, 138, 241);
 }
 
 .startBtn {
@@ -41,4 +40,8 @@ margin: auto;
     margin-top: 5px;
     background-color: rgb(191, 138, 241);
     border-color: black;
+}
+
+.card {
+    flex-direction: row;
 }
