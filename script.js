@@ -10,7 +10,7 @@
 
 //Time Variables
 const startBtn = document.querySelector("#startBtn");
-let timeDisplay = document.querySelector("#timer")
+let timeDisplay = document.querySelector("#timer");
 const startingTime = 1.5;
 let time = startingTime * 60;
 
@@ -19,10 +19,12 @@ const home = document.getElementById('pg1');
 const endQuiz = document.getElementById('endQuiz ');
 const lastPage = document.getElementById('lastPage ');
 
+// Questions and Buttons variables
 const questionsQ = document.getElementById('question-container');
 let shuffledQuestions, currentQuestionIndex
-const questionEl = document.getElementById('question')
-const buttonsEl = document.getElementById('buttons')
+const questionEl = document.getElementById('question');
+const buttonsEl = document.getElementById('answer-buttons');
+const nextBtn = document.getElementById('next-btn');
 
 
 
@@ -58,15 +60,33 @@ function timer() {
 // Questions and selection functions **************************************************
 
 function setNextQuestion() {
+    resetState()
     showQuestion(shuffledQuestions[currentQuestionIndex])
 
 }
 
 function showQuestion(question) {
-    questionEl.innerHTML = question.question
+    questionEl.innerHTML = question.question;
+    question.answers.forEach(answer => {
+        const button = document.createElement('button');
+        button.innerText = answer.text
+        button.classList.add('btn');
+        if (answer.correct) {
+            button.dataset.correct = answer.correct
+        }
+        button.addEventListener('click', selectAnswer);
+        buttonsEl.appendChild(button)
+    });
 }
 
-function selectAnswer() {
+function resetState() {
+    nextBtn.classList.add('hide');
+    while (buttonsEl.firstChild) {
+        buttonsEl.removeChild(buttonsEl.firstChild)
+    }
+}
+
+function selectAnswer(e) {
 
 }
 
