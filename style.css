@@ -1,65 +1,68 @@
-          body {
-              background-color: floralwhite;
-              font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-          }
-          
-          .homeContent {
-              padding: 25%;
-              text-align: center;
-              margin: auto;
-          }
-          
-          .timer {
-              text-align: right;
-              font-size: medium;
-              margin-top: 20px;
-          }
-          
-          .highScores {
-              text-align: left;
-              float: left;
-              font-size: medium;
-              margin-top: 20px;
-              color: rgb(191, 138, 241);
-          }
-          
-          .startBtn {
-              border-radius: 0.3rem;
-              background-color: rgb(191, 138, 241);
-              border-color: black;
-              padding-left: 1rem;
-              padding-right: 1rem;
-          }
-          
-          .containerQuestions {
-              margin: 10px;
-              padding: 15px;
-              text-align: left;
-          }
-          
-          .btn {
-              margin-top: 5px;
-              background-color: rgb(191, 138, 241);
-              border-color: black;
-              color: black;
-              transition: cubic-bezier(0.6, -0.28, 0.735, 0.045);
-          }
-          
-          .card {
-              flex-direction: row;
-          }
-          
-          .section {
-              padding: 10rem;
-              margin: 10px;
-              text-align: center;
-          }
-          
-          .section {
-              display: flex;
-              text-align: center;
-          }
-          
-          .hide {
-              display: none;
-          }
+              body {
+                  background-color: floralwhite;
+                  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+              }
+              
+              .homeContent {
+                  padding: 25%;
+                  text-align: center;
+                  margin: auto;
+              }
+              
+              .timer {
+                  text-align: right;
+                  font-size: medium;
+                  margin-top: 20px;
+              }
+              
+              .highScores {
+                  text-align: left;
+                  float: left;
+                  font-size: medium;
+                  margin-top: 20px;
+                  color: rgb(191, 138, 241);
+              }
+              
+              .startBtn {
+                  border-radius: 0.3rem;
+                  background-color: rgb(191, 138, 241);
+                  border-color: black;
+                  padding-left: 1rem;
+                  padding-right: 1rem;
+              }
+              
+              .btn {
+                  margin-top: 5px;
+                  background-color: rgb(191, 138, 241);
+                  border-color: black;
+                  color: black;
+              }
+              
+              .hide {
+                  display: none;
+              }
+              
+              #question-container {
+                  width: 800px;
+                  max-width: 80%;
+                  background-color: white;
+                  border-radius: 0.5rem;
+                  padding: 10px;
+                  box-shadow: 0 0 10px 0.5px;
+                  margin: 150px auto;
+                  padding: 10px;
+              }
+              
+              .btn-grid {
+                  display: grid;
+                  grid-template-columns: repeat(2, auto);
+                  gap: 10px;
+                  margin: 20px 0;
+                  border: none;
+                  border-radius: 0.5rem;
+              }
+              
+              .btn:hover {
+                  border-color: black;
+                  opacity: 70%;
+              }

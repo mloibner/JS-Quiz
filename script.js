@@ -14,11 +14,7 @@ let timeDisplay = document.querySelector("#timer")
 const startingTime = 1.5;
 let time = startingTime * 60;
 const home = document.getElementById('pg1');
-const q1 = document.getElementById('q1 ');
-const q2 = document.getElementById('q2 ');
-const q3 = document.getElementById('q3 ');
-const q4 = document.getElementById('q4 ');
-const q5 = document.getElementById('q5 ');
+const questions = document.getElementById('question-container');
 const endQuiz = document.getElementById('endQuiz ');
 const lastPage = document.getElementById('lastPage ');
 
@@ -30,7 +26,7 @@ let start = startBtn.addEventListener('click', function() {
     console.log("clicked");
     setInterval(timer, 1000);
     home.classList.add("hide");
-    q1.classList.remove('hide');
+    questions.classList.remove('hide');
 });
 
 //Timer count down function *********************************************************
@@ -58,10 +54,122 @@ function setNextQuestion() {
 }
 
 
+// <
+// div class = "question1 section hide"
+// id = "q1 " >
+//     <
+//     div class = "card "
+// style = "width: 30rem; " >
+//     <
+//     div class = "card-body " >
+//     <
+//     h5 class = "card-title " > Question 1: < /h5> <
+//     p class = "card-text " > Arrays in javascript can be used to store _______. < /p> <
+//     a class = "btn btn-primary " > 1. Numbers & Strings < /a> <
+//     a class = "btn btn-primary " > 2. Other Arrays < /a> <
+//     a class = "btn btn-primary " > 3. Booleans < /a> <
+//     a class = "btn btn-primary " > 4. All of the above < /a>
+//     <!-- Correct answer 4. -->
+//     <
+//     /div> <
+//     /div>
 
-//take to new page showing first questions
-//2. generate question in header
-//create buttons under header with answers
+// <
+// /div>
+
+// <!-- This div is for the for the second question -->
+// <
+// div class = "question2 section hide"
+// id = "q2 " >
+//     <
+//     div class = "card "
+// style = "width: 30rem; " >
+//     <
+//     div class = "card-body " >
+//     <
+//     h5 class = "card-title " > Question 2: < /h5> <
+//     p class = "card-text " > A very useful tool used during development and debugging
+// for printing content to the debugger is: < /p> <
+//     a class = "btn btn-primary " > 1. JavaScript < /a> <
+//     a class = "btn btn-primary " > 2. For Loops < /a> <
+//     a class = "btn btn-primary " > 3. Console.log < /a> <
+//     a class = "btn btn-primary " > 4. Terminal / Bash < /a>
+//     <!-- Correct answer is 3. -->
+//     <
+//     /div> <
+//     /div> <
+//     /div>
+
+// <!-- This div is for the for the third question -->
+// <
+// div class = "question3 section hide"
+// id = "q3 " >
+//     <
+//     div class = "card "
+// style = "width: 30rem; " >
+//     <
+//     div class = "card-body " >
+//     <
+//     h5 class = "card-title " > Question 3: < /h5> <
+//     p class = "card-text " > String values must be enclosed within _________ when being assigned to variables. < /p> <
+//     a class = "btn btn-primary " > 1. Curly Brackets < /a> <
+//     a class = "btn btn-primary " > 2. Commas < /a> <
+//     a class = "btn btn-primary " > 3. Quotes < /a> <
+//     a class = "btn btn-primary " > 4. Perentheses < /a>
+//     <!-- Correct answer is 2. -->
+//     <
+//     /div> <
+//     /div> <
+//     /div>
+
+// <!-- This div is for the for the fourth question -->
+// <
+// div class = "question4 section hide"
+// id = "q4 " >
+//     <
+//     div class = "card "
+// style = "width: 30rem; " >
+//     <
+//     div class = "card-body " >
+//     <
+//     h5 class = "card-title " > Question 4: < /h5> <
+//     p class = "card-text " > The condition inside an
+// if /
+// else statement, is enclosed within ________. < /p> <
+//     a class = "btn btn-primary " > 1. Quotes < /a> <
+//     a class = "btn btn-primary " > 2. Curly Brackets < /a> <
+//     a class = "btn btn-primary " > 3. Parentheses < /a> <
+//     a class = "btn btn-primary " > 4. Square Brackets < /a>
+//     <!--Correct answer is 2.-->
+//     <
+//     /div> <
+//     /div> <
+//     /div>
+
+// <!-- This div is for the for the final question -->
+// <
+// div class = "question5 section hide"
+// id = "q5 " >
+//     <
+//     div class = "card "
+// style = "width: 30rem; " >
+//     <
+//     div class = "card-body " >
+//     <
+//     h5 class = "card-title " > Question 5: < /h5> <
+//     p class = "card-text " > Commonly used data types DO NOT include: < /p> <
+//     a class = "btn btn-primary " > 1. Strings < /a> <
+//     a class = "btn btn-primary " > 2. Booleans < /a> <
+//     a class = "btn btn-primary " > 3. Alerts < /a> <
+//     a class = "btn btn-primary " > 4. Numbers < /a>
+//     <!-- Correct answer is 3. -->
+//     <
+//     /div> <
+//     /div> <
+//     /div>
+
+
+
 //add event listener to buttons
 //function, if correct, play on
 //if click !===correct answer, subtract time from clock
