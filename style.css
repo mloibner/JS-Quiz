@@ -55,10 +55,11 @@
               text-align: center;
           }
           
-          .hide {
-              display: none;
+          .section {
+              display: flex;
+              text-align: center;
           }
           
-          .show {
-              display: flex;
+          .hide {
+              display: none;
           }
