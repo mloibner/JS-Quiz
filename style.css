@@ -40,8 +40,16 @@ body {
     margin-top: 5px;
     background-color: rgb(191, 138, 241);
     border-color: black;
+    color: black;
+    transition: cubic-bezier(0.6, -0.28, 0.735, 0.045);
 }
 
 .card {
     flex-direction: row;
+}
+
+.section {
+    padding: 10rem;
+    margin: 10px;
+    text-align: center;
 }
