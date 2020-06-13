@@ -1,5 +1,3 @@
-//GIVEN I am taking a code quiz
-// WHEN I click the start button
 // THEN a timer starts and I am presented with a question
 // WHEN I answer a question
 // THEN I am presented with another question
@@ -10,19 +8,32 @@
 // WHEN the game is over
 // THEN I can save my initials and score
 
-
-//1.Generate start button. 
-//add event listener to click
+//Variables
 const startBtn = document.querySelector("#startBtn");
 let timeDisplay = document.querySelector("#timer")
-const startingTime = 1;
+const startingTime = 1.5;
 let time = startingTime * 60;
+const home = document.getElementById('pg1');
+const q1 = document.getElementById('q1 ');
+const q2 = document.getElementById('q2 ');
+const q3 = document.getElementById('q3 ');
+const q4 = document.getElementById('q4 ');
+const q5 = document.getElementById('q5 ');
+const endQuiz = document.getElementById('endQuiz ');
+const lastPage = document.getElementById('lastPage ');
 
+
+
+
+//Start button event listener and timer call function *******************************
 let start = startBtn.addEventListener('click', function() {
     console.log("clicked");
     setInterval(timer, 1000);
+    home.classList.add("hide");
+    q1.classList.remove('hide');
 });
 
+//Timer count down function *********************************************************
 function timer() {
     const minutes = Math.floor(time / 60);
     let seconds = time % 60;
@@ -40,21 +51,14 @@ function timer() {
     }
 }
 
+//********************************************************************************
+
+function setNextQuestion() {
+
+}
 
 
 
-
-
-
-
-// if (timer < 0) {
-//     clearInterval(timer);
-//     document.getElementById("end").innerHTML = "TIME UP!!";
-// }
-
-
-
-//when clicked, start a timer
 //take to new page showing first questions
 //2. generate question in header
 //create buttons under header with answers
