@@ -1,9 +1,6 @@
 // WHEN I answer a question incorrectly
 // THEN time is subtracted from the clock
-// WHEN all questions are answered or the timer reaches 0
-// THEN the game is over
-// WHEN the game is over
-// THEN I can save my initials and score
+
 
 //Time Variables
 const startBtn = document.querySelector("#startBtn");
@@ -34,7 +31,7 @@ const highscore = document.getElementById('highScores');
 const saveName = document.getElementById('save');
 const highScoreList = document.getElementById('emptyDiv');
 let score = 0
-
+let input = document.getElementById('input')
 
 
 //Start button event listener and timer call function *******************************
@@ -134,17 +131,24 @@ function selectAnswer(e) {
     } else { wrong.classList.remove('hide') }
 }
 
+//this function is to set the div once game is finished
 finBtn.addEventListener('click', () => {
-    questionsQ.classList.add('hide')
-    yourScore.classList.add('hide')
-    endQuiz.classList.remove('hide')
-    saveName.classList.remove('hide')
-})
+        questionsQ.classList.add('hide')
+        yourScore.classList.add('hide')
+        endQuiz.classList.remove('hide')
+        saveName.classList.remove('hide')
+    })
+    // from here down is not working yet. need to fix local storage functions to display text.
+function store() {
+    localStorage.setItem(input.textContent, yourScore)
+    console.log(input.textContent, yourScore)
+}
 
 
 saveName.addEventListener('click', () => {
     endQuiz.classList.add('hide')
     lastPage.classList.remove('hide')
+    store(input.textContent, yourScore)
 })
 
 // these are the different questions and answers
@@ -188,17 +192,11 @@ const options = [{
         { text: 'quotes', correct: true },
         { text: 'parentheses', correct: false }
     ]
+}, {
+    question: 'What type of function is represented by () => {}?',
+    answers: [
+        { text: 'pointer functions', correct: false },
+        { text: 'arrow functions', correct: true },
+        { text: 'equal-lessthan functions', correct: false }
+    ]
 }];
-
-
-
-//if click !===correct answer, subtract time from clock
-//4. If questions answered correctly, add counter to keep score
-//5. Timer vs questions to stop the game. 
-//if timer === 0 alert game over - need to find a way to 
-//else if questions answered alert game over/you win - maybe attach this to last question ?
-//6. At end of game imput name for high score
-//record score of player
-//save their name
-//have it saved for future games
-// click function for high scores in top right corner - event listener for when clicked display high scores
