@@ -70,7 +70,11 @@ function timer() {
         questionsQ.classList.add('hide');
         gameOver.classList.remove('hide');
     }
+
 }
+
+
+
 
 // Questions and selection functions **************************************************
 
