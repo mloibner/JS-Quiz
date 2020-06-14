@@ -16,8 +16,8 @@ let time = startingTime * 60;
 
 //Page element variables
 const home = document.getElementById('pg1');
-const endQuiz = document.getElementById('endQuiz ');
-const lastPage = document.getElementById('lastPage ');
+const endQuiz = document.getElementById('endQuiz');
+const lastPage = document.getElementById('lastPage');
 
 // Questions and Buttons variables
 const questionsQ = document.getElementById('question-container');
@@ -25,6 +25,13 @@ let shuffledQuestions, currentQuestionIndex
 const questionEl = document.getElementById('question');
 const buttonsEl = document.getElementById('answer-buttons');
 const nextBtn = document.getElementById('next-btn');
+const correcto = document.getElementById('correct');
+const wrong = document.getElementById('wrong');
+const finBtn = document.getElementById('finish-btn');
+
+//score counter
+const highscore = document.getElementById('highScores')
+let score = 0
 
 
 
@@ -47,6 +54,7 @@ function timer() {
     seconds = seconds < 1 ? '0' + seconds : seconds;
 
     timeDisplay.innerHTML =
+        'Time remaining ' +
         `${minutes}: ${seconds}`;
 
     time--;
@@ -65,20 +73,28 @@ function setNextQuestion() {
 
 }
 
+nextBtn.addEventListener('click', () => {
+    currentQuestionIndex++
+    setNextQuestion()
+})
+
+
+//This function adds text to the question and buttons for each question.
 function showQuestion(question) {
     questionEl.innerHTML = question.question;
-    question.answers.forEach(answer => {
+    question.answers.forEach(answers => {
         const button = document.createElement('button');
-        button.innerText = answer.text
+        button.innerText = answers.text
         button.classList.add('btn');
-        if (answer.correct) {
-            button.dataset.correct = answer.correct
+        if (answers.correct) {
+            button.dataset.correct = answers.correct;
         }
         button.addEventListener('click', selectAnswer);
         buttonsEl.appendChild(button)
     });
 }
 
+//This removes unneeded buttons from the card when asking for an answer. Only the amount of buttons that have an answer will show
 function resetState() {
     nextBtn.classList.add('hide');
     while (buttonsEl.firstChild) {
@@ -86,9 +102,42 @@ function resetState() {
     }
 }
 
+//This function is creating a boolean data set for correct answers only
 function selectAnswer(e) {
-
+    const selectedBtn = e.target
+    const correct = selectedBtn.dataset.correct
+    setStatusClass(document.body, correcto)
+    Array.from(buttonsEl.children).forEach(button => {
+        setStatusClass(button, button.dataset.correct)
+    })
+    if (shuffledQuestions.length > currentQuestionIndex + 1) {
+        nextBtn.classList.remove('hide')
+    } else {
+        finBtn.classList.remove('hide')
+    }
 }
+
+function setStatusClass(element, correct) {
+    clearStatusClass(element)
+    if (correct) {
+        correcto.classList.remove('hide')
+    } else { wrong.classList.remove('hide') }
+}
+
+function clearStatusClass() {
+    correcto.classList.add('hide');
+    wrong.classList.add('hide');
+}
+
+finBtn.addEventListener('click', () => {
+    questionsQ.classList.add('hide');
+    endQuiz.classList.remove('hide')
+})
+
+
+
+
+
 
 const options = [{
     question: "Arrays in javascript can be used to store _______.",
@@ -98,43 +147,39 @@ const options = [{
         { text: 'booleans', correct: false },
         { text: 'all of the above', correct: true }
     ]
-}]
-
-
-
-
-// A very useful tool used during development and debugging
-// for printing content to the debugger is:
-//     a class = "btn btn-primary " > 1. JavaScript < /a> <
-//     a class = "btn btn-primary " > 2. For Loops < /a> <
-//     a class = "btn btn-primary " > 3. Console.log < /a> <
-//     a class = "btn btn-primary " > 4. Terminal / Bash < /a>
-//     <!-- Correct answer is 3. -->
-
-
-//String values must be enclosed within _________ when being assigned to variables. 
-//     a class = "btn btn-primary " > 1. Curly Brackets < /a> <
-//     a class = "btn btn-primary " > 2. Commas < /a> <
-//     a class = "btn btn-primary " > 3. Quotes < /a> <
-//     a class = "btn btn-primary " > 4. Perentheses < /a>
-//     <!-- Correct answer is 2. -->
-
-
-//The condition inside an if / else statement, is enclosed within ________. 
-//     a class = "btn btn-primary " > 1. Quotes < /a> <
-//     a class = "btn btn-primary " > 2. Curly Brackets < /a> <
-//     a class = "btn btn-primary " > 3. Parentheses < /a> <
-//     a class = "btn btn-primary " > 4. Square Brackets < /a>
-//     <!--Correct answer is 2.-->
-
-
-//Commonly used data types DO NOT include: < /p> <
-//     a class = "btn btn-primary " > 1. Strings < /a> <
-//     a class = "btn btn-primary " > 2. Booleans < /a> <
-//     a class = "btn btn-primary " > 3. Alerts < /a> <
-//     a class = "btn btn-primary " > 4. Numbers < /a>
-//     <!-- Correct answer is 3. -->
-
+}, {
+    question: "A very useful tool used during development and debugging for printing content to the debugger is:",
+    answers: [
+        { text: 'JavaScript', correct: false },
+        { text: 'for loops', correct: false },
+        { text: 'console.log', correct: true },
+        { text: 'terminal/bash', correct: false }
+    ]
+}, {
+    question: 'The condition inside an if/else statement, is enclosed within ________.',
+    answers: [
+        { text: 'quotes', correct: false },
+        { text: 'curly brackets', correct: true },
+        { text: 'parentheses', correct: false },
+        { text: 'square brackets', correct: false }
+    ]
+}, {
+    question: 'Commonly used data types DO NOT include:',
+    answers: [
+        { text: 'strings', correct: false },
+        { text: 'booleans', correct: false },
+        { text: 'alerts', correct: true },
+        { text: 'numbers', correct: false }
+    ]
+}, {
+    question: 'String values must be enclosed within _________ when being assigned to variables.',
+    answers: [
+        { text: 'curly brackets', correct: false },
+        { text: 'commas', correct: false },
+        { text: 'quotes', correct: true },
+        { text: 'parentheses', correct: false }
+    ]
+}];
 
 
 

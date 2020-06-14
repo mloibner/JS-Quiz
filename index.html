@@ -33,24 +33,26 @@
 
         <div class="hide" id="question-container">
             <div id="question">Question</div>
-            <div id="answer-buttons" class="btn-grid">
-                <button class="btn">Answer 1</button>
-                <button class="btn">Answer 2</button>
-                <button class="btn">Answer 3</button>
-                <button class="btn">Answer 4</button>
-            </div>
+            <div id="answer-buttons" class="btn-grid"></div>
             <div class="controls">
                 <button id="next-btn" class="next-btn btn hide">Next</button>
+                <button id="finish-btn" class="finish-btn btn hide">Finish</button>
             </div>
+            <div class="correct hide" id="correct">Correct!</div>
+            <div class="wrong hide" id="wrong">Incorrect!</div>
         </div>
 
 
         <div class="endQuiz section hide" id="endQuiz">
             <h2>All Done!</h2>
             <p>Your final score is</p>
+            <div id="finalScore" class="finScore"></div>
             <br>
             <p>Record your high score here!</p>
-            <input type="text" class="input" id="input" placeholder="Enter your name">
+            <div id="textInput">
+                <input type="text" class="input" id="input" placeholder="Enter your name">
+                <button id="save" class="btn hide">Save!</button>
+            </div>
         </div>
         <div class="section hide" id="lastPage">
             <h3>High Scores</h3>
