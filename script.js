@@ -37,6 +37,7 @@ let score = 0
 
 
 //Start button event listener and timer call function *******************************
+
 let start = startBtn.addEventListener('click', function() {
     console.log("clicked");
     setInterval(timer, 1000);
@@ -54,6 +55,10 @@ function timer() {
     let seconds = time % 60;
 
     seconds = seconds < 1 ? '0' + seconds : seconds;
+
+    if (seconds < 10) {
+        seconds = seconds < 1 ? '0' + seconds : '0' + seconds
+    }
 
     timeDisplay.innerHTML =
         'Time remaining ' +
