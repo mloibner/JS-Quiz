@@ -32,7 +32,8 @@ const yourScore = document.getElementById('yourScore')
 
 //score counter
 const highscore = document.getElementById('highScores')
-let saveName = document.getElementById('save')
+const saveName = document.getElementById('save')
+const highScoreList = document.getElementById('emptyDiv')
 let score = 0
 
 
@@ -141,7 +142,10 @@ finBtn.addEventListener('click', () => {
 })
 
 
-
+saveName.addEventListener('click', () => {
+    endQuiz.classList.add('hide')
+    lastPage.classList.remove('hide')
+})
 
 
 
