@@ -67,7 +67,7 @@
                   opacity: 70%;
               }
               
-              .endQuiz {
+              .section {
                   border: 0.5px;
                   border-radius: 0.5rem;
                   border-color: black;
@@ -81,15 +81,4 @@
               #quizTime {
                   text-align: center;
                   padding-bottom: 10px;
-              }
-              
-              .highS {
-                  border: 0.5px;
-                  border-radius: 0.5rem;
-                  border-color: black;
-                  box-shadow: 0 0 10px 0.5px;
-                  padding: 10px;
-                  text-align: center;
-                  margin: 20% auto;
-                  background-color: white;
               }

@@ -1,6 +1,3 @@
-// THEN a timer starts and I am presented with a question
-// WHEN I answer a question
-// THEN I am presented with another question
 // WHEN I answer a question incorrectly
 // THEN time is subtracted from the clock
 // WHEN all questions are answered or the timer reaches 0
@@ -13,6 +10,7 @@ const startBtn = document.querySelector("#startBtn");
 let timeDisplay = document.querySelector("#timer");
 const startingTime = 1.25;
 let time = startingTime * 60;
+const gameOver = document.getElementById('gameOver')
 
 //Page element variables
 const home = document.getElementById('pg1');
@@ -66,6 +64,8 @@ function timer() {
     if (startingTime && time < 0) {
         clearInterval(time);
         timeDisplay.innerHTML = "TIME'S UP !!!"
+        questionsQ.classList.add('hide');
+        gameOver.classList.remove('hide');
     }
 }
 
@@ -80,6 +80,8 @@ function setNextQuestion() {
 nextBtn.addEventListener('click', () => {
     currentQuestionIndex++
     setNextQuestion()
+    correcto.classList.add('hide');
+    wrong.classList.add('hide');
 })
 
 
@@ -116,12 +118,13 @@ function selectAnswer(e) {
         setStatusClass(button, button.dataset.correct)
     })
     if (shuffledQuestions.length > currentQuestionIndex + 1) {
-        nextBtn.classList.remove('hide')
+        nextBtn.classList.remove('hide');
     } else {
         finBtn.classList.remove('hide')
     }
 }
 
+//this function shows the correct or incorrect based on answer
 function setStatusClass(element, correct) {
     clearStatusClass(element)
     if (correct) {
@@ -129,6 +132,7 @@ function setStatusClass(element, correct) {
     } else { wrong.classList.remove('hide') }
 }
 
+//this function removes the incorrect or correct for the next question.
 function clearStatusClass() {
     correcto.classList.add('hide');
     wrong.classList.add('hide');
@@ -147,60 +151,53 @@ saveName.addEventListener('click', () => {
     lastPage.classList.remove('hide')
 })
 
-
-
+// these are the different questions and answers
 const options = [{
     question: "Arrays in javascript can be used to store _______.",
     answers: [
-        { text: 'numbers & strings', correct: 1 },
-        { text: 'other arrays', correct: 1 },
-        { text: 'booleans', correct: 1 },
-        { text: 'all of the above', correct: 0 }
+        { text: 'numbers & strings', correct: false },
+        { text: 'other arrays', correct: false },
+        { text: 'booleans', correct: false },
+        { text: 'all of the above', correct: true }
     ]
 }, {
     question: "A very useful tool used during development and debugging for printing content to the debugger is:",
     answers: [
-        { text: 'JavaScript', correct: 1 },
-        { text: 'for loops', correct: 1 },
-        { text: 'console.log', correct: 0 },
-        { text: 'terminal/bash', correct: 1 }
+        { text: 'JavaScript', correct: false },
+        { text: 'for loops', correct: false },
+        { text: 'console.log', correct: true },
+        { text: 'terminal/bash', correct: false }
     ]
 }, {
     question: 'The condition inside an if/else statement, is enclosed within ________.',
     answers: [
-        { text: 'quotes', correct: 1 },
-        { text: 'curly brackets', correct: 0 },
-        { text: 'parentheses', correct: 1 },
-        { text: 'square brackets', correct: 1 }
+        { text: 'quotes', correct: false },
+        { text: 'curly brackets', correct: true },
+        { text: 'parentheses', correct: false },
+        { text: 'square brackets', correct: false }
     ]
 }, {
     question: 'Commonly used data types DO NOT include:',
     answers: [
-        { text: 'strings', correct: 1 },
-        { text: 'booleans', correct: 1 },
-        { text: 'alerts', correct: 0 },
-        { text: 'numbers', correct: 1 }
+        { text: 'strings', correct: false },
+        { text: 'booleans', correct: false },
+        { text: 'alerts', correct: true },
+        { text: 'numbers', correct: false }
     ]
 }, {
     question: 'String values must be enclosed within _________ when being assigned to variables.',
     answers: [
-        { text: 'curly brackets', correct: 1 },
-        { text: 'commas', correct: 1 },
-        { text: 'quotes', correct: 0 },
-        { text: 'parentheses', correct: 1 }
+        { text: 'curly brackets', correct: false },
+        { text: 'commas', correct: false },
+        { text: 'quotes', correct: true },
+        { text: 'parentheses', correct: false }
     ]
 }];
 
 
 
-//add event listener to buttons
-//function, if correct, play on
 //if click !===correct answer, subtract time from clock
-//alert correct or incorrect
-//move onto next question
-//3. repeat above 3 times for total of 4 questions
 //4. If questions answered correctly, add counter to keep score
-//let answer = 0 answer ++
 //5. Timer vs questions to stop the game. 
 //if timer === 0 alert game over - need to find a way to 
 //else if questions answered alert game over/you win - maybe attach this to last question ?
