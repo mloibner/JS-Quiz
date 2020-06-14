@@ -26,12 +26,13 @@ const nextBtn = document.getElementById('next-btn');
 const correcto = document.getElementById('correct');
 const wrong = document.getElementById('wrong');
 const finBtn = document.getElementById('finish-btn');
-const yourScore = document.getElementById('yourScore')
+const yourScore = document.getElementById('yourScore');
+const finalScore = document.getElementById('finalScore');
 
 //score counter
-const highscore = document.getElementById('highScores')
-const saveName = document.getElementById('save')
-const highScoreList = document.getElementById('emptyDiv')
+const highscore = document.getElementById('highScores');
+const saveName = document.getElementById('save');
+const highScoreList = document.getElementById('emptyDiv');
 let score = 0
 
 
@@ -118,29 +119,19 @@ function resetState() {
 function selectAnswer(e) {
     const selectedBtn = e.target
     const correct = selectedBtn.dataset.correct
-    setStatusClass(document.body, correct)
-    Array.from(buttonsEl.children).forEach(button => {
-        setStatusClass(button, button.dataset.correct)
-    })
     if (shuffledQuestions.length > currentQuestionIndex + 1) {
         nextBtn.classList.remove('hide');
     } else {
         finBtn.classList.remove('hide')
     }
-}
-
-//this function shows the correct or incorrect based on answer
-function setStatusClass(element, correct) {
-    clearStatusClass(element)
-    if (correct) {
+    if (answer = correct) {
+        score++;
+        yourScore.innerText = "Your score " + (score * 10);
+        finalScore.innerText = (score * 10)
+    }
+    if (answer = correct) {
         correcto.classList.remove('hide')
     } else { wrong.classList.remove('hide') }
-}
-
-//this function removes the incorrect or correct for the next question.
-function clearStatusClass() {
-    correcto.classList.add('hide');
-    wrong.classList.add('hide');
 }
 
 finBtn.addEventListener('click', () => {
