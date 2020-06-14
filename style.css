@@ -77,3 +77,8 @@
                   margin: 20% auto;
                   background-color: white;
               }
+              
+              #quizTime {
+                  text-align: center;
+                  padding-bottom: 10px;
+              }

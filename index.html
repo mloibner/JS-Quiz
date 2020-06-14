@@ -14,10 +14,13 @@
     <div class="container">
         <!-- This is the div for the timer and the High Score-->
         <div class="row">
-            <div class="col-sm-6 highScore">
+            <div class="col-sm-4 highScore">
                 <h1 id="highScores" class="highScores">High Scores</h1>
             </div>
-            <div class="col-sm-6 timerDiv">
+            <div class="col-sm-4 highScore">
+                <h1 id="yourScore" class="highScores hide">Your score</h1>
+            </div>
+            <div class="col-sm-4 timerDiv">
                 <h1 id="timer" class="timer">Timer</h1>
             </div>
         </div>
@@ -32,6 +35,7 @@
         <!-- This div is for the for the first question -->
 
         <div class="hide" id="question-container">
+            <h2 id="quizTime">Quiz Time</h2>
             <div id="question">Question</div>
             <div id="answer-buttons" class="btn-grid"></div>
             <div class="controls">
@@ -48,7 +52,7 @@
             <p>Your final score is</p>
             <div id="finalScore" class="finScore"></div>
             <br>
-            <p>Record your high score here!</p>
+            <p>Record your high score here.</p>
             <div id="textInput">
                 <input type="text" class="input" id="input" placeholder="Enter your name">
                 <button id="save" class="btn hide">Save!</button>

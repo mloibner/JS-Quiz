@@ -11,7 +11,7 @@
 //Time Variables
 const startBtn = document.querySelector("#startBtn");
 let timeDisplay = document.querySelector("#timer");
-const startingTime = 1.5;
+const startingTime = 1.25;
 let time = startingTime * 60;
 
 //Page element variables
@@ -28,9 +28,11 @@ const nextBtn = document.getElementById('next-btn');
 const correcto = document.getElementById('correct');
 const wrong = document.getElementById('wrong');
 const finBtn = document.getElementById('finish-btn');
+const yourScore = document.getElementById('yourScore')
 
 //score counter
 const highscore = document.getElementById('highScores')
+let saveName = document.getElementById('save')
 let score = 0
 
 
@@ -41,6 +43,7 @@ let start = startBtn.addEventListener('click', function() {
     setInterval(timer, 1000);
     home.classList.add("hide");
     questionsQ.classList.remove('hide');
+    yourScore.classList.remove('hide')
     shuffledQuestions = options.sort(() => Math.random() - .5);
     currentQuestionIndex = 0
     setNextQuestion()
@@ -88,6 +91,7 @@ function showQuestion(question) {
         button.classList.add('btn');
         if (answers.correct) {
             button.dataset.correct = answers.correct;
+            console.log(answers.correct)
         }
         button.addEventListener('click', selectAnswer);
         buttonsEl.appendChild(button)
@@ -106,7 +110,7 @@ function resetState() {
 function selectAnswer(e) {
     const selectedBtn = e.target
     const correct = selectedBtn.dataset.correct
-    setStatusClass(document.body, correcto)
+    setStatusClass(document.body, correct)
     Array.from(buttonsEl.children).forEach(button => {
         setStatusClass(button, button.dataset.correct)
     })
@@ -130,8 +134,10 @@ function clearStatusClass() {
 }
 
 finBtn.addEventListener('click', () => {
-    questionsQ.classList.add('hide');
+    questionsQ.classList.add('hide')
+    yourScore.classList.add('hide')
     endQuiz.classList.remove('hide')
+    saveName.classList.remove('hide')
 })
 
 
@@ -142,42 +148,42 @@ finBtn.addEventListener('click', () => {
 const options = [{
     question: "Arrays in javascript can be used to store _______.",
     answers: [
-        { text: 'numbers & strings', correct: false },
-        { text: 'other arrays', correct: false },
-        { text: 'booleans', correct: false },
-        { text: 'all of the above', correct: true }
+        { text: 'numbers & strings', correct: 1 },
+        { text: 'other arrays', correct: 1 },
+        { text: 'booleans', correct: 1 },
+        { text: 'all of the above', correct: 0 }
     ]
 }, {
     question: "A very useful tool used during development and debugging for printing content to the debugger is:",
     answers: [
-        { text: 'JavaScript', correct: false },
-        { text: 'for loops', correct: false },
-        { text: 'console.log', correct: true },
-        { text: 'terminal/bash', correct: false }
+        { text: 'JavaScript', correct: 1 },
+        { text: 'for loops', correct: 1 },
+        { text: 'console.log', correct: 0 },
+        { text: 'terminal/bash', correct: 1 }
     ]
 }, {
     question: 'The condition inside an if/else statement, is enclosed within ________.',
     answers: [
-        { text: 'quotes', correct: false },
-        { text: 'curly brackets', correct: true },
-        { text: 'parentheses', correct: false },
-        { text: 'square brackets', correct: false }
+        { text: 'quotes', correct: 1 },
+        { text: 'curly brackets', correct: 0 },
+        { text: 'parentheses', correct: 1 },
+        { text: 'square brackets', correct: 1 }
     ]
 }, {
     question: 'Commonly used data types DO NOT include:',
     answers: [
-        { text: 'strings', correct: false },
-        { text: 'booleans', correct: false },
-        { text: 'alerts', correct: true },
-        { text: 'numbers', correct: false }
+        { text: 'strings', correct: 1 },
+        { text: 'booleans', correct: 1 },
+        { text: 'alerts', correct: 0 },
+        { text: 'numbers', correct: 1 }
     ]
 }, {
     question: 'String values must be enclosed within _________ when being assigned to variables.',
     answers: [
-        { text: 'curly brackets', correct: false },
-        { text: 'commas', correct: false },
-        { text: 'quotes', correct: true },
-        { text: 'parentheses', correct: false }
+        { text: 'curly brackets', correct: 1 },
+        { text: 'commas', correct: 1 },
+        { text: 'quotes', correct: 0 },
+        { text: 'parentheses', correct: 1 }
     ]
 }];
 
