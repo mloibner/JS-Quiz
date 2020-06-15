@@ -35,37 +35,14 @@ const highScoreList = document.getElementById('emptyDiv');
 let score = 0
 let input = document.getElementById('input')
 const clear = document.getElementById('clearHighScores')
-
-saveName.addEventListener('click', function(event) {
-    event.preventDefault();
-    if (input.value.length < 1) return;
-    highScoreList.innerHTML += ('< li > ' + input.value + ' < li > ');
-
-    input.value = " ";
-    localStorage.setItem(input, highScoreList.innerHTML);
-
-    //array of objects [{name: '', score: ''},] store this under scores
-    // when page loaded get item scores, if doesnt exist (!) set to []. 
-    //when save clicked, scores.push local storage.setItem scores. JSON.stringify scores
-
-}, false);
-
-let saved = localStorage.getItem(input);
-
-if (saved) {
-    highScoreList.innerHTML = saved;
-}
-
-clear.addEventListener('click', function() {
-    localStorage.clear(input, highScoreList.innerHTML)
-})
+let interval;
 
 
 //Start button event listener and timer call function *******************************
 
 let start = startBtn.addEventListener('click', function() {
     console.log("clicked");
-    setInterval(timer, 1000);
+    interval = setInterval(timer, 1000);
     home.classList.add("hide");
     questionsQ.classList.remove('hide');
     yourScore.classList.remove('hide')
@@ -151,7 +128,7 @@ function selectAnswer(e) {
     if (shuffledQuestions.length > currentQuestionIndex + 1) {
         nextBtn.classList.remove('hide');
     } else {
-        finBtn.classList.remove('hide')
+        finBtn.classList.remove('hide');
     }
     if (answer = correct) {
         score++;
@@ -168,25 +145,14 @@ function selectAnswer(e) {
 
 //this function is to set the div once game is finished
 finBtn.addEventListener('click', () => {
-        questionsQ.classList.add('hide')
-        yourScore.classList.add('hide')
-        endQuiz.classList.remove('hide')
-        saveName.classList.remove('hide')
+        questionsQ.classList.add('hide');
+        yourScore.classList.add('hide');
+        endQuiz.classList.remove('hide');
+        saveName.classList.remove('hide');
+        clearInterval(interval)
+
     })
-    // from here down is not working yet. need to fix local storage functions to display text.
-function store() {
-    localStorage.setItem(input.textContent, yourScore)
-    console.log(input.textContent, yourScore)
-}
-
-
-saveName.addEventListener('click', () => {
-    endQuiz.classList.add('hide')
-    lastPage.classList.remove('hide')
-    store(input.textContent, yourScore)
-})
-
-// these are the different questions and answers
+    // these are the different questions and answers
 const options = [{
     question: "Arrays in javascript can be used to store _______.",
     answers: [
@@ -235,3 +201,54 @@ const options = [{
         { text: 'equal-lessthan functions', correct: false }
     ]
 }];
+
+//savings and removing name and score to local storage. 
+let nameScore = JSON.parse(localStorage.getItem('scores'));
+if (!nameScore) {
+    nameScore = [];
+}
+saveName.addEventListener('click', function(event) {
+    nameScore.push({
+        name: input.value,
+        score: score
+    });
+    event.preventDefault();
+    localStorage.setItem('scores', JSON.stringify(nameScore));
+
+    endQuiz.classList.add('hide')
+    lastPage.classList.remove('hide')
+
+    for (let i = 0; i < nameScore.length; i++) {
+        const name = nameScore[i].name;
+        const score = nameScore[i].score;
+
+        let li = document.createElement('li');
+        li.textContent = name + " " + score + '0';
+        li.setAttribute('data-index', [i]);
+
+        highScoreList.appendChild(li);
+    }
+});
+
+let saved = localStorage.getItem(input);
+
+if (saved) {
+    highScoreList.innerHTML = saved;
+}
+
+clear.addEventListener('click', function() {
+    localStorage.clear();
+    highScoreList.innerHTML = ''
+});
+
+
+highscore.addEventListener('click', function() {
+    lastPage.classList.remove('hide')
+});
+
+let closed = document.getElementById('close');
+
+closed.addEventListener('click', function() {
+    lastPage.classList.add('hide')
+
+})
