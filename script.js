@@ -7,7 +7,9 @@ const startBtn = document.querySelector("#startBtn");
 let timeDisplay = document.querySelector("#timer");
 const startingTime = 1.25;
 let time = startingTime * 60;
-const gameOver = document.getElementById('gameOver')
+
+const gameOver = document.getElementById('gameOver');
+
 
 //Page element variables
 const home = document.getElementById('pg1');
@@ -32,6 +34,31 @@ const saveName = document.getElementById('save');
 const highScoreList = document.getElementById('emptyDiv');
 let score = 0
 let input = document.getElementById('input')
+const clear = document.getElementById('clearHighScores')
+
+saveName.addEventListener('click', function(event) {
+    event.preventDefault();
+    if (input.value.length < 1) return;
+    highScoreList.innerHTML += ('< li > ' + input.value + ' < li > ');
+
+    input.value = " ";
+    localStorage.setItem(input, highScoreList.innerHTML);
+
+    //array of objects [{name: '', score: ''},] store this under scores
+    // when page loaded get item scores, if doesnt exist (!) set to []. 
+    //when save clicked, scores.push local storage.setItem scores. JSON.stringify scores
+
+}, false);
+
+let saved = localStorage.getItem(input);
+
+if (saved) {
+    highScoreList.innerHTML = saved;
+}
+
+clear.addEventListener('click', function() {
+    localStorage.clear(input, highScoreList.innerHTML)
+})
 
 
 //Start button event listener and timer call function *******************************
@@ -70,8 +97,9 @@ function timer() {
         questionsQ.classList.add('hide');
         gameOver.classList.remove('hide');
     }
-
 }
+
+
 
 
 
@@ -133,6 +161,9 @@ function selectAnswer(e) {
     if (answer = correct) {
         correcto.classList.remove('hide')
     } else { wrong.classList.remove('hide') }
+    if (answer = correct) {
+        time = time
+    } else { time -= 10 }
 }
 
 //this function is to set the div once game is finished
