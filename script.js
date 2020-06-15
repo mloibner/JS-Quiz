@@ -37,10 +37,11 @@ let input = document.getElementById('input')
 const clear = document.getElementById('clearHighScores')
 let interval;
 
-
 //Start button event listener and timer call function *******************************
 
-let start = startBtn.addEventListener('click', function() {
+let start = startBtn.addEventListener('click', begin);
+
+function begin() {
     console.log("clicked");
     interval = setInterval(timer, 1000);
     home.classList.add("hide");
@@ -48,8 +49,9 @@ let start = startBtn.addEventListener('click', function() {
     yourScore.classList.remove('hide')
     shuffledQuestions = options.sort(() => Math.random() - .5);
     currentQuestionIndex = 0
+    time = startingTime * 60;
     setNextQuestion()
-});
+};
 
 //Timer count down function *********************************************************
 function timer() {
@@ -75,18 +77,11 @@ function timer() {
         gameOver.classList.remove('hide');
     }
 }
-
-
-
-
-
-
 // Questions and selection functions **************************************************
 
 function setNextQuestion() {
     resetState()
     showQuestion(shuffledQuestions[currentQuestionIndex])
-
 }
 
 nextBtn.addEventListener('click', () => {
@@ -207,6 +202,7 @@ let nameScore = JSON.parse(localStorage.getItem('scores'));
 if (!nameScore) {
     nameScore = [];
 }
+
 saveName.addEventListener('click', function(event) {
     nameScore.push({
         name: input.value,
@@ -251,4 +247,4 @@ let closed = document.getElementById('close');
 closed.addEventListener('click', function() {
     lastPage.classList.add('hide')
 
-})
+});
