@@ -31,6 +31,10 @@ If you run out of time, the quiz will end. If you want to restart, refresh your 
 ## Deployed URL
 https://mloibner.github.io/JS-Quiz/index.html
 
+## Contributing
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change. Please make sure to update tests as appropriate.
+
+
 
 ### License
 
