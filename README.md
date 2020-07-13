@@ -1,4 +1,4 @@
-# Quiz
+# JavaScript Quiz
 
 ## Description
 Test your knowledge with some JavaScript questions, if the answer is correct, you can move onto the next question. If the answer is incorrect, watch your time reduce. 
