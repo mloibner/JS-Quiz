@@ -8,5 +8,25 @@ If you run out of time, the quiz will end. If you want to restart, refresh your 
 
 ## Snippets
 
+<img src="Assets/home.png">
+
+<br>
+<br>
+
+<img src = "Assets/quiz.png">
+
+<br>
+<br>
+
+<img src = "Assets/scorelog.png">
+
+<br>
+<br>
+
+<img src = "Assets/highscores.png">
+
+<br>
+<br>
+
 ## Find the Quiz here:
 https://mloibner.github.io/JS-Quiz/index.html
